@@ -1,0 +1,36 @@
+﻿<!-- Views/MainCategory/Index.cshtml -->
+@model IEnumerable<Libary.Models.MainCategory>
+
+@{
+    ViewData["Title"] = "Main Categories";
+}
+
+<h1>Main Categories</h1>
+<a asp-area="" style="color:blue" asp-controller="Admin" asp-action="Index">Return To The Main</a>
+
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Category Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.CategoryName)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    

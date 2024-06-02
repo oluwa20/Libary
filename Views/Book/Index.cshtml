@@ -1,0 +1,47 @@
+﻿
+@model IEnumerable<Libary.Models.Book>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books</h1>
+<a asp-area="" style="color:blue" asp-controller="Admin" asp-action="Index">Return To The Main</a>
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Publisher</th>
+            <th>Type</th>
+            <th>Availability</th>
+            <th>Main Category</th>
+            <th>Sub Category</th>
+            <th>Book State</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                <td>@Html.DisplayFor(modelItem => item.Author)</td>
+                <td>@Html.DisplayFor(modelItem => item.Publisher)</td>
+                <td>@Html.DisplayFor(modelItem => item.Type)</td>
+                <td>@Html.DisplayFor(modelItem => item.Availability)</td>
+                <td>@Html.DisplayFor(modelItem => item.MainCategory.CategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.SubCategory.SubcategoryName)</td>
+                <td>@Html.DisplayFor(modelItem => item.BookState.StatusName)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.BookId" class="btn btn-warning">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.BookId" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

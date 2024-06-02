@@ -1,0 +1,55 @@
+﻿
+@model Libary.Models.Reservation
+
+@{
+    ViewData["Title"] = "Delete Reservation";
+}
+
+<h1>Delete Reservation</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div>
+    <h4>Are you sure you want to delete this?</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            User
+        </dt>
+        <dd class="col-sm-10">
+            @Model.User.Username
+        </dd>
+        <dt class="col-sm-2">
+            Book
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Book.Title
+        </dd>
+        <dt class="col-sm-2">
+            Reserved Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ReservedDate
+        </dd>
+        <dt class="col-sm-2">
+            Return Date
+        </dt>
+        <dd class="col-sm-10">
+            @Model.ReturnDate
+        </dd>
+        <dt class="col-sm-2">
+            Status
+        </dt>
+        <dd class="col-sm-10">
+            @Model.StatusId
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ReservationId" />
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <a asp-action="Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </form>
+</div>
+<a asp-action="Index" class="btn btn-primary">Return To Index</a>
